@@ -1,5 +1,7 @@
-import singleton from '../src/module/index.js';
+import singleton from '../dist/index.js';
 import test from 'tape';
+
+console.log('singleton', singleton);
 
 // put test code here
 

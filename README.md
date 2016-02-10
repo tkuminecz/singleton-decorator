@@ -1,48 +1,38 @@
-[![Build Status](https://travis-ci.org/tkuminecz/es7-umd-module-seed.svg?branch=master)](https://travis-ci.org/tkuminecz/es7-umd-module-seed)
+[![Build Status](https://travis-ci.org/tkuminecz/single-decorator.svg?branch=master)](https://travis-ci.org/tkuminecz/singleton-decorator)
 
-# es7-umd-module-seed
-Seed repository for an ES7 project to build a UMD module.
+# singleton-decorator
+An ES7 decorator that adds singleton behavior to classes.
 
-Features (you get all this by default):
-* JSPM
-* Babel (stage-1 preset)
-* "Legacy" ES7 decorator support
-* Flowtype support
-
-## Getting started
-Clone the repo and make it your own:
-
-```
-$ git clone https://github.com/tkuminecz/es7-umd-module-seed.git
-$ mv es7-umd-module-seed YOUR_PROJECT
-$ cd YOUR_PROJECT
-$ rm -rf .git
-```
-
-By default, the module this project builds is exported to the global namespace (when appropriate) as `Module`. You can change the identifier in the config section of `package.json`.
+## Usage
+By default, the class will be decorated with the "implicit" style. You can treat the class as if it weren't a singleton but only one instance will ever be created:
 
 ```javascript
-{
-  ...
-  "config": {
-    "globalName": "Module"
-  }
-  ...
+import singleton from 'singleton-decorator';
+
+@singleton
+class Foo {
 }
+
+let a = new Foo(),
+	b = new Foo(),
+	c = Foo();
+
+// a === b === c
 ```
 
-## Working On Your Project
-The entry point to your module is `src/module/index.js`. All related module code should also go in `src/module`.
+The above is also equivalent to specifying `@singleton('implicit')`.
 
-You can use `src/main.js` as a place to write development/testing code that won't get exported in the final module. It's simply a place to test out how others would consume your module.
+You can also decorate classes to use the "explicit" style (i.e. `Foo.getInstance()`):
 
-Run your module in the browser:`npm run web`
+```javascript
+import singleton from 'singleton-decorator';
 
-or with Node: `npm run node`
+@singleton('explicit')
+class Foo {
+}
 
-## Building & Publishing
-Building and publishing the module to NPM is simple.
-```
-$ npm run build
-$ npm publish
+let a Foo.getInstance(),
+	b = Foo.getInstance();
+
+// a === b
 ```

@@ -1,4 +1,4 @@
-import singleton from './module/index.js';
+import singleton from 'singleton-decorator';
 
 @singleton
 class Foo {

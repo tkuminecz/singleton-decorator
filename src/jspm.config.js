@@ -48,12 +48,98 @@ SystemJS.config({
 		"process": "github:jspm/nodelibs-process@0.2.0-alpha",
 		"reflect": "npm:harmony-reflect@1.4.2",
 		"stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
+		"tape": "npm:tape@4.4.0",
 		"tty": "github:jspm/nodelibs-tty@0.2.0-alpha",
 		"url": "github:jspm/nodelibs-url@0.2.0-alpha",
 		"util": "github:jspm/nodelibs-util@0.2.0-alpha"
 	},
 
 	packages: {
+		"singleton-decorator": {
+			main: "index.js"
+		},
+		"npm:define-properties@1.1.2": {
+			"map": {
+				"foreach": "npm:foreach@2.0.5",
+				"object-keys": "npm:object-keys@1.0.9"
+			}
+		},
+		"npm:es-abstract@1.5.0": {
+			"map": {
+				"es-to-primitive": "npm:es-to-primitive@1.1.1",
+				"function-bind": "npm:function-bind@1.0.2",
+				"is-callable": "npm:is-callable@1.1.2",
+				"is-regex": "npm:is-regex@1.0.3"
+			}
+		},
+		"npm:es-to-primitive@1.1.1": {
+			"map": {
+				"is-callable": "npm:is-callable@1.1.2",
+				"is-date-object": "npm:is-date-object@1.0.1",
+				"is-symbol": "npm:is-symbol@1.0.1"
+			}
+		},
+		"npm:glob@5.0.15": {
+			"map": {
+				"inflight": "npm:inflight@1.0.4",
+				"inherits": "npm:inherits@2.0.1",
+				"minimatch": "npm:minimatch@3.0.0",
+				"once": "npm:once@1.3.3",
+				"path-is-absolute": "npm:path-is-absolute@1.0.0"
+			}
+		},
+		"npm:has@1.0.1": {
+			"map": {
+				"function-bind": "npm:function-bind@1.0.2"
+			}
+		},
+		"npm:inflight@1.0.4": {
+			"map": {
+				"once": "npm:once@1.3.3",
+				"wrappy": "npm:wrappy@1.0.1"
+			}
+		},
+		"npm:minimatch@3.0.0": {
+			"map": {
+				"brace-expansion": "npm:brace-expansion@1.1.2"
+			}
+		},
+		"npm:once@1.3.3": {
+			"map": {
+				"wrappy": "npm:wrappy@1.0.1"
+			}
+		},
+		"npm:resumer@0.0.0": {
+			"map": {
+				"through": "npm:through@2.3.8"
+			}
+		},
+		"npm:string.prototype.trim@1.1.2": {
+			"map": {
+				"define-properties": "npm:define-properties@1.1.2",
+				"es-abstract": "npm:es-abstract@1.5.0",
+				"function-bind": "npm:function-bind@1.0.2"
+			}
+		},
+		"npm:tape@4.4.0": {
+			"map": {
+				"deep-equal": "npm:deep-equal@1.0.1",
+				"defined": "npm:defined@1.0.0",
+				"function-bind": "npm:function-bind@1.0.2",
+				"glob": "npm:glob@5.0.15",
+				"has": "npm:has@1.0.1",
+				"inherits": "npm:inherits@2.0.1",
+				"minimist": "npm:minimist@1.2.0",
+				"object-inspect": "npm:object-inspect@1.0.2",
+				"resolve": "npm:resolve@1.1.7",
+				"resumer": "npm:resumer@0.0.0",
+				"string.prototype.trim": "npm:string.prototype.trim@1.1.2",
+				"through": "npm:through@2.3.8"
+			}
+		},
+		"tests": {
+			"main": "index.js"
+		},
 		"github:jspm/nodelibs-http@0.2.0-alpha": {
 			"map": {
 				"http-browserify": "npm:stream-http@2.1.0"
@@ -63,9 +149,6 @@ SystemJS.config({
 			"map": {
 				"url-browserify": "npm:url@0.11.0"
 			}
-		},
-		"module": {
-			"main": "index.js"
 		},
 		"github:jspm/nodelibs-buffer@0.2.0-alpha": {
 			"map": {

@@ -1,105 +1,208 @@
 {
-  "name": "es7-umd-module-seed",
-  "version": "0.1.0",
-  "description": "Seed repository for a UMD module written in ES7",
-  "main": "build/index.js",
-  "files": [
-    "build/index.js"
-  ],
-  "config": {
-    "globalName": "Module"
-  },
-  "scripts": {
-    "clean": "rm -rf build",
-    "jspm:install": "./node_modules/.bin/jspm install",
-    "prebuild": "npm run clean && npm run prestart",
-    "build": "./node_modules/.bin/jspm build module build/index.js --format umd --global-name $npm_package_config_globalName --skip-source-maps",
-    "prestart": "npm install && npm run jspm:install",
-    "node": "./node_modules/.bin/babel-node src/main.js",
-    "web": "./node_modules/.bin/jspm-server --port=`node -e 'console.log(Math.floor(Math.random() * 65000) + 2000);'` src/",
-    "test": "./node_modules/.bin/tape -r babel-register test/**/*.js | ./node_modules/.bin/faucet"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tkuminecz/es7-umd-module-seed.git"
-  },
-  "keywords": [
-    "es7",
-    "umd",
-    "module",
-    "seed"
-  ],
-  "author": "tkuminecz@gmail.com",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/tkuminecz/es7-umd-module-seed/issues"
-  },
-  "homepage": "https://github.com/tkuminecz/es7-umd-module-seed#readme",
-  "devDependencies": {
-    "babel-cli": "^6.5.1",
-    "babel-plugin-syntax-decorators": "^6.5.0",
-    "babel-plugin-syntax-flow": "^6.5.0",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-plugin-transform-flow-strip-types": "^6.5.0",
-    "babel-plugin-typecheck": "^3.6.1",
-    "babel-preset-es2015": "^6.5.0",
-    "babel-preset-stage-1": "^6.5.0",
-    "babel-register": "^6.5.1",
-    "babel-tape-runner": "^2.0.0",
-    "faucet": "0.0.1",
-    "jspm": "^0.17.0-beta.6",
-    "jspm-server": "^1.0.1",
-    "tape": "^4.4.0"
-  },
-  "jspm": {
-    "name": "es7-umd-module-seed",
-    "directories": {
-      "baseURL": "src"
-    },
-    "dependencies": {
-      "babel-preset-es2015": "npm:babel-preset-es2015@^6.5.0",
-      "lodash": "npm:lodash@^4.3.0",
-      "reflect": "npm:harmony-reflect@^1.4.2"
-    },
-    "devDependencies": {
-      "babel-plugin-syntax-decorators": "npm:babel-plugin-syntax-decorators@^6.5.0",
-      "babel-plugin-syntax-flow": "npm:babel-plugin-syntax-flow@^6.5.0",
-      "babel-plugin-transform-decorators-legacy": "npm:babel-plugin-transform-decorators-legacy@^1.3.4",
-      "babel-plugin-transform-flow-strip-types": "npm:babel-plugin-transform-flow-strip-types@^6.5.0",
-      "babel-plugin-typecheck": "npm:babel-plugin-typecheck@^3.6.1",
-      "babel-preset-stage-1": "npm:babel-preset-stage-1@^6.5.0",
-      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.2"
-    },
-    "peerDependencies": {
-      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
-      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
-      "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
-      "core-js": "npm:core-js@^1.2.0",
-      "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
-      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
-      "http": "github:jspm/nodelibs-http@^0.2.0-alpha",
-      "module": "github:jspm/nodelibs-module@^0.2.0-alpha",
-      "net": "github:jspm/nodelibs-net@^0.2.0-alpha",
-      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
-      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
-      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
-      "tty": "github:jspm/nodelibs-tty@^0.2.0-alpha",
-      "url": "github:jspm/nodelibs-url@^0.2.0-alpha",
-      "util": "github:jspm/nodelibs-util@^0.2.0-alpha"
-    },
-    "overrides": {
-      "npm:babel-runtime@5.8.35": {
-        "main": false,
-        "dependencies": {},
-        "optionalDependencies": {
-          "core-js": "^1.2.0"
-        }
-      },
-      "npm:inherits@2.0.1": {
-        "ignore": [
-          "test.js"
-        ]
-      }
-    }
-  }
+	"name": "es7-umd-module-seed",
+	"version": "0.1.0",
+	"description": "Seed repository for a UMD module written in ES7",
+	"main": "build/index.js",
+	"files": [
+		"build/index.js"
+	],
+	"config": {
+		"globalName": "Module"
+	},
+	"scripts": {
+		"clean": "rm -rf build",
+		"postinstall": "./node_modules/.bin/jspm install",
+		"prebuild": "npm run clean",
+		"build": "./node_modules/.bin/jspm build module build/index.js --format umd --global-name $npm_package_config_globalName --skip-source-maps",
+		"node": "./node_modules/.bin/babel-node src/main.js",
+		"web": "./node_modules/.bin/jspm-server --port=`node -e 'console.log(Math.floor(Math.random() * 65000) + 2000);'` src/",
+		"test": "./node_modules/.bin/jspm run tests | ./node_modules/.bin/faucet"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/tkuminecz/es7-umd-module-seed.git"
+	},
+	"keywords": [
+		"es7",
+		"umd",
+		"module",
+		"seed"
+	],
+	"author": "tkuminecz@gmail.com",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/tkuminecz/es7-umd-module-seed/issues"
+	},
+	"homepage": "https://github.com/tkuminecz/es7-umd-module-seed#readme",
+	"devDependencies": {
+		"babel-cli": "^6.5.1",
+		"babel-plugin-syntax-decorators": "^6.5.0",
+		"babel-plugin-syntax-flow": "^6.5.0",
+		"babel-plugin-transform-decorators-legacy": "^1.3.4",
+		"babel-plugin-transform-flow-strip-types": "^6.5.0",
+		"babel-plugin-typecheck": "^3.6.1",
+		"babel-preset-es2015": "^6.5.0",
+		"babel-preset-stage-1": "^6.5.0",
+		"babel-register": "^6.5.1",
+		"babel-tape-runner": "^2.0.0",
+		"faucet": "0.0.1",
+		"jspm": "^0.17.0-beta.6",
+		"jspm-server": "^1.0.1",
+		"tape": "^4.4.0"
+	},
+	"jspm": {
+		"name": "es7-umd-module-seed",
+		"directories": {
+			"baseURL": "src"
+		},
+		"dependencies": {
+			"babel-preset-es2015": "npm:babel-preset-es2015@^6.5.0",
+			"lodash": "npm:lodash@^4.3.0",
+			"reflect": "npm:harmony-reflect@^1.4.2"
+		},
+		"devDependencies": {
+			"babel-plugin-syntax-decorators": "npm:babel-plugin-syntax-decorators@^6.5.0",
+			"babel-plugin-syntax-flow": "npm:babel-plugin-syntax-flow@^6.5.0",
+			"babel-plugin-transform-decorators-legacy": "npm:babel-plugin-transform-decorators-legacy@^1.3.4",
+			"babel-plugin-transform-flow-strip-types": "npm:babel-plugin-transform-flow-strip-types@^6.5.0",
+			"babel-plugin-typecheck": "npm:babel-plugin-typecheck@^3.6.1",
+			"babel-preset-stage-1": "npm:babel-preset-stage-1@^6.5.0",
+			"plugin-babel": "npm:systemjs-plugin-babel@^0.0.2",
+			"tape": "npm:tape@^4.4.0"
+		},
+		"peerDependencies": {
+			"assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
+			"buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
+			"child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
+			"core-js": "npm:core-js@^1.2.0",
+			"events": "github:jspm/nodelibs-events@^0.2.0-alpha",
+			"fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
+			"http": "github:jspm/nodelibs-http@^0.2.0-alpha",
+			"module": "github:jspm/nodelibs-module@^0.2.0-alpha",
+			"net": "github:jspm/nodelibs-net@^0.2.0-alpha",
+			"path": "github:jspm/nodelibs-path@^0.2.0-alpha",
+			"process": "github:jspm/nodelibs-process@^0.2.0-alpha",
+			"stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
+			"tty": "github:jspm/nodelibs-tty@^0.2.0-alpha",
+			"url": "github:jspm/nodelibs-url@^0.2.0-alpha",
+			"util": "github:jspm/nodelibs-util@^0.2.0-alpha"
+		},
+		"overrides": {
+			"npm:babel-runtime@5.8.35": {
+				"main": "index",
+				"dependencies": {},
+				"optionalDependencies": {
+					"core-js": "^1.2.0"
+				},
+				"format": "cjs",
+				"meta": {
+					"*": {
+						"globals": {
+							"process": "process"
+						}
+					},
+					"*.json": {
+						"format": "json"
+					}
+				},
+				"map": {
+					"./core-js/object.js": "./core-js/object/index.js",
+					"./regenerator.js": "./regenerator/index.js",
+					"babel-runtime": "."
+				}
+			},
+			"npm:core-js@1.2.6": {
+				"format": "cjs",
+				"meta": {
+					"*": {
+						"globals": {
+							"process": "process"
+						}
+					},
+					"*.json": {
+						"format": "json"
+					}
+				},
+				"map": {
+					"./build.js": "./build/index.js",
+					"./core.js": "./core/index.js",
+					"./es5.js": "./es5/index.js",
+					"./es6.js": "./es6/index.js",
+					"./es7.js": "./es7/index.js",
+					"./fn/array.js": "./fn/array/index.js",
+					"./fn/function.js": "./fn/function/index.js",
+					"./fn/html-collection.js": "./fn/html-collection/index.js",
+					"./fn/math.js": "./fn/math/index.js",
+					"./fn/node-list.js": "./fn/node-list/index.js",
+					"./fn/number.js": "./fn/number/index.js",
+					"./fn/object.js": "./fn/object/index.js",
+					"./fn/reflect.js": "./fn/reflect/index.js",
+					"./fn/regexp.js": "./fn/regexp/index.js",
+					"./fn/string.js": "./fn/string/index.js",
+					"./fn/symbol.js": "./fn/symbol/index.js",
+					"./js.js": "./js/index.js",
+					"./library.js": "./library/index.js",
+					"./library/core.js": "./library/core/index.js",
+					"./library/es5.js": "./library/es5/index.js",
+					"./library/es6.js": "./library/es6/index.js",
+					"./library/es7.js": "./library/es7/index.js",
+					"./library/fn/array.js": "./library/fn/array/index.js",
+					"./library/fn/function.js": "./library/fn/function/index.js",
+					"./library/fn/html-collection.js": "./library/fn/html-collection/index.js",
+					"./library/fn/math.js": "./library/fn/math/index.js",
+					"./library/fn/node-list.js": "./library/fn/node-list/index.js",
+					"./library/fn/number.js": "./library/fn/number/index.js",
+					"./library/fn/object.js": "./library/fn/object/index.js",
+					"./library/fn/reflect.js": "./library/fn/reflect/index.js",
+					"./library/fn/regexp.js": "./library/fn/regexp/index.js",
+					"./library/fn/string.js": "./library/fn/string/index.js",
+					"./library/fn/symbol.js": "./library/fn/symbol/index.js",
+					"./library/js.js": "./library/js/index.js",
+					"./library/web.js": "./library/web/index.js",
+					"./package": "./package.json",
+					"./web.js": "./web/index.js"
+				}
+			},
+			"npm:inherits@2.0.1": {
+				"ignore": [
+					"test.js"
+				]
+			},
+			"npm:lodash@3.10.1": {
+				"format": "cjs",
+				"meta": {
+					"*": {
+						"globals": {
+							"process": "process"
+						}
+					},
+					"*.json": {
+						"format": "json"
+					}
+				},
+				"map": {}
+			},
+			"npm:lodash@4.3.0": {
+				"format": "cjs",
+				"meta": {
+					"*": {
+						"globals": {
+							"process": "process"
+						}
+					},
+					"*.json": {
+						"format": "json"
+					},
+					"isBuffer.js": {
+						"globals": {
+							"Buffer": "buffer/global"
+						}
+					},
+					"toString": true,
+					"valueOf": true
+				},
+				"map": {}
+			}
+		}
+	}
 }

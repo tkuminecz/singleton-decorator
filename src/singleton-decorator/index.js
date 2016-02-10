@@ -55,7 +55,7 @@ const singleton = (target_or_style) => {
 		}
 	}
 
-	return decorateImplicit;
+	return decorateImplicit(target_or_style);
 };
 
 export default singleton;

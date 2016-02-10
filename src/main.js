@@ -1,3 +1,11 @@
-import module from './module';
+import singleton from 'singleton-decorator';
 
-console.log('main.js', module);
+@singleton
+class Foo {
+}
+
+let a = new Foo(),
+	b = new Foo(),
+	c = Foo();
+
+console.log(a, b, c, a === b, b === c);

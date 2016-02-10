@@ -15,7 +15,9 @@
 		"prebuild": "npm run clean",
 		"build": "./node_modules/.bin/jspm build module build/index.js --format umd --global-name $npm_package_config_globalName --skip-source-maps",
 		"node": "./node_modules/.bin/babel-node src/main.js",
-		"web": "./node_modules/.bin/jspm-server --port=`node -e 'console.log(Math.floor(Math.random() * 65000) + 2000);'` src/",
+		"setport": "[ -f .port ] && echo Port `cat .port`|| (echo `node -e 'console.log(Math.floor(Math.random() * 65000) + 2000);'` > .port && echo Port `cat .port`)",
+		"preweb": "npm run setport",
+		"web": "./node_modules/.bin/jspm-server --port=`cat .port` src/",
 		"test": "./node_modules/.bin/jspm run tests | ./node_modules/.bin/faucet"
 	},
 	"repository": {

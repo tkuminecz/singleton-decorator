@@ -1,11 +1,99 @@
 <!doctype html>
 <html>
+	<head>
+		<style>
+			#test-results-wrapper {
+				border: 1px solid #eee;
+				border-radius: 0.75em;
+				display: inline-block;
+				font-family: Input, monospace;
+				font-size: 1.25em;
+				padding: 2em;
+				transition: all 1000ms ease-out;
+			}
+			.loader:before,
+			.loader:after,
+			.loader {
+				border-radius: 50%;
+				width: 2.5em;
+				height: 2.5em;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+				-webkit-animation: load7 1.8s infinite ease-in-out;
+				animation: load7 1.8s infinite ease-in-out;
+			}
+			.loader {
+				font-size: 4px;
+				position: relative;
+				margin: 1em;
+				text-indent: -9999em;
+				-webkit-transform: translateZ(0);
+				-ms-transform: translateZ(0);
+				transform: translateZ(0);
+				-webkit-animation-delay: -0.16s;
+				animation-delay: -0.16s;
+				top: -9px;
+			}
+			.loader:before {
+				left: -3.5em;
+				-webkit-animation-delay: -0.32s;
+				animation-delay: -0.32s;
+			}
+			.loader:after {
+				left: 3.5em;
+			}
+			.loader:before,
+			.loader:after {
+				content: '';
+				position: absolute;
+			}
+			@-webkit-keyframes load7 {
+				0%,
+				80%,
+				100% {
+					box-shadow: 0 2.5em 0 -1.3em #eee;
+				}
+				40% {
+					box-shadow: 0 2.5em 0 0 #eee;
+				}
+			}
+			@keyframes load7 {
+				0%,
+				80%,
+				100% {
+					box-shadow: 0 2.5em 0 -1.3em #eee;
+				}
+				40% {
+					box-shadow: 0 2.5em 0 0 #eee;
+				}
+			}
+		</style>
+	</head>
 	<body>
+		<div id="test-results-wrapper"><pre id="test-results"><div class="loader"></div></pre></div>
+
 		<script src="jspm_packages/system.js"></script>
 		<script src="jspm.browser.js"></script>
 		<script src="jspm.config.js"></script>
 		<script>
+
+			System.import('tape').then(tape => {
+				var stream = tape.createStream(),
+					output = '';
+
+				stream.on('data', chunk => {
+					output += chunk;
+				});
+
+				stream.on('end', () => {
+					document.getElementById('test-results').innerHTML = output;
+				})
+
+				System.import('tests');
+			});
+
 			System.import('main.js');
+
 		</script>
 	</body>
 </html>

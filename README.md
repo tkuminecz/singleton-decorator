@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/tkuminecz/single-decorator.svg?branch=master)](https://travis-ci.org/tkuminecz/singleton-decorator)
+[![Build Status](https://travis-ci.org/tkuminecz/singleton-decorator.svg?branch=master)](https://travis-ci.org/tkuminecz/singleton-decorator)
 
 # singleton-decorator
 An ES7 decorator that adds singleton behavior to classes.
